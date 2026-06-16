@@ -46,7 +46,7 @@ pipeline {
                 script {
                     echo "Pushing to Docker Hub..."
                     sh """
-                        echo ${DOCKER_CREDENTIALS.psw} | docker login -u ${DOCKER_CREDENTIALS.usr} --password-stdin
+                        echo ${DOCKER_CREDENTIALS_PSW} | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin
                         docker push ${DOCKER_IMAGE}:${env.COMMIT_HASH}
                         docker push ${DOCKER_IMAGE}:latest
                     """
@@ -72,7 +72,7 @@ pipeline {
                         # Commit and push
                         git add deployment.yaml
                         git commit -m "Update image tag to ${env.COMMIT_HASH} [skip ci]"
-                        git push https://${GIT_CREDENTIALS.usr}:${GIT_CREDENTIALS.psw}@github.com/0xJeevs/mj-gitops-manifests.git main
+                        git push https://${GIT_CREDENTIALS_USR}:${GIT_CREDENTIALS_PSW}@github.com/0xJeevs/mj-gitops-manifests.git main
                     """
                 }
             }
