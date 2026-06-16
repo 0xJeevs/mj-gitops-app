@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'jerry1808/mj-gitops-app'
         MANIFESTS_REPO = 'https://github.com/0xJeevs/mj-gitops-manifests.git'
-        DOCKER_CREDENTIALS = credentials('dockerhub-credentials')
+        DOCKER_CREDENTIALS = credentials('dockerhub')
         GIT_CREDENTIALS = credentials('git-credentials')
     }
     
